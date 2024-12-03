@@ -2,14 +2,24 @@ services:
   windows:
     image: dockurr/windows
     container_name: windows
+    volumes:
+      - ./userdata:/data
     environment:
-      VERSION: "11"
+      VERSION: "11l"
+      DISK_SIZE: "40G"
+      RAM_SIZE: "48GB"
+      CPU_CORES: "24"
+      USERNAME: "hossein"
+      PASSWORD: "cft6yhn"
+
     devices:
       - /dev/kvm
       - /dev/net/tun
     cap_add:
       - NET_ADMIN
     ports:
+      - 3000-3060:3000-3060
+      - 4000-4060:4000-4060
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
