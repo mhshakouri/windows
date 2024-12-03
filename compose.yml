@@ -1,26 +1,46 @@
 services:
   windows:
-    image: dockurr/windows
+    image: localhost:5000/windows_11_trader
     container_name: windows
     volumes:
       - ./userdata:/data
     environment:
-      VERSION: "11l"
       DISK_SIZE: "40G"
       RAM_SIZE: "48GB"
       CPU_CORES: "24"
       USERNAME: "hossein"
       PASSWORD: "cft6yhn"
-
     devices:
       - /dev/kvm
       - /dev/net/tun
     cap_add:
       - NET_ADMIN
     ports:
-      - 3000-3060:3000-3060
-      - 4000-4060:4000-4060
+      - 4000-4023:4000-4023
       - 8006:8006
       - 3389:3389/tcp
       - 3389:3389/udp
     stop_grace_period: 2m
+  # windows_11:
+  #   image: localhost:5000/windows_11_trader
+  #   container_name: windows_11
+  #   volumes:
+  #     - ./userdata:/data
+  #   environment:
+  #     VERSION: "11l"
+  #     DISK_SIZE: "40G"
+  #     RAM_SIZE: "48GB"
+  #     CPU_CORES: "24"
+  #     USERNAME: "hossein"
+  #     PASSWORD: "cft6yhn"
+  #   devices:
+  #     - /dev/kvm
+  #     - /dev/net/tun
+  #   cap_add:
+  #     - NET_ADMIN
+  #   ports:
+  #     - 4000-4023:4000-4023
+  #     - 8006:8006
+  #     - 3389:3389/tcp
+  #     - 3389:3389/udp
+  #   stop_grace_period: 2m
